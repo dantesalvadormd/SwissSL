@@ -1,0 +1,32 @@
+
+# Create a new variable for magnitude scale
+overall <- overall %>%
+  mutate(magnitude = case_when(
+    unit_cost < 1 ~ "< 1",
+    unit_cost >= 1 & unit_cost < 10 ~ "1-10",
+    unit_cost >= 10 & unit_cost < 100 ~ "10-100",
+    unit_cost >= 100 & unit_cost < 1000 ~ "100-1000",
+    unit_cost >= 1000 ~ ">= 1000",
+    TRUE ~ NA_character_  # To handle NA cases
+  ))
+
+
+library(ggplot2)
+# Create a histogram for each magnitude scale
+ggplot(overall, aes(x = unit_cost)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black", alpha = 0.7) +
+  facet_wrap(~ magnitude, scales = "free", ncol = 1) +  # Create separate panels for each magnitude
+  labs(
+    title = "Histograms of Unit Cost by Magnitude Scale",
+    x = "Unit Cost",
+    y = "Frequency"
+  ) +
+  scale_x_continuous(limits = c(0, NA)) +  # Set x limits to start at 0
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),  # Center the title
+    panel.grid.major = element_line(color = "grey80"),  # Customize grid
+    panel.grid.minor = element_blank()  # Remove minor grid lines
+  )
+
+# NOTE.. recode SINGLE so that they have same strategy as MULTIPLE
