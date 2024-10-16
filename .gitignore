@@ -1,25 +1,3 @@
-# History files
-.Rhistory
-.Rapp.history
-
-# Session Data files
-.RData
-.RDataTmp
-
-# User-specific files
-.Ruserdata
-
-# Example code in package build process
-*-Ex.R
-
-# Output files from R CMD build
-/*.tar.gz
-
-# Output files from R CMD check
-/*.Rcheck/
-
-# RStudio files
-.Rproj.user/
 
 # produced vignettes
 vignettes/*.html
@@ -36,8 +14,6 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
-# R Environment Variables
-.Renviron
 
 # pkgdown site
 docs/
@@ -45,5 +21,3 @@ docs/
 # translation temp files
 po/*~
 
-# RStudio Connect folder
-rsconnect/
